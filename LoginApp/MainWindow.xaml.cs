@@ -66,14 +66,15 @@ namespace LoginApp
             this.BindValidation(ViewModel, vm => vm.ConfirmPasswordRule, v => v.confirmPwErrorTextBlock.Text)
                 .DisposeWith(disposables);
 
-            this.WhenAnyValue(x => x.ViewModel.ValidationContext.IsValid)
-                .Select(v => v)
-                .BindTo(this, x => x.summaryHeaderTextBlock.Visibility, BooleanToVisibilityHint.Inverse)
+            this.OneWayBind(ViewModel, vm => vm.ValidationContext.IsValid, v => v.summaryHeaderTextBlock.Visibility, BooleanToVisibilityHint.Inverse)
                 .DisposeWith(disposables);
 
-            this.WhenAnyValue(x => x.ViewModel.ValidationContext.Text)
-                .Select(vt => vt.ToSingleLine(Environment.NewLine))
-                .BindTo(this, v => v.summaryContentTextBlock.Text)
+            this.OneWayBind(ViewModel, vm => vm.ValidationContext.Text, v => v.summaryContentTextBlock.Text,
+                vt => vt.ToSingleLine(Environment.NewLine))
+                .DisposeWith(disposables);
+
+            //Test for custom extension (see ValidationExtensions)
+            this.BindVisibility(ViewModel, vm => vm.ConfirmPasswordRule, v => v.pwCheckIcon.Visibility, BooleanToVisibilityHint.UseHidden)
                 .DisposeWith(disposables);
         }
     }

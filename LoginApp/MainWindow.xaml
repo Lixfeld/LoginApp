@@ -35,15 +35,21 @@
         <StackPanel>
             <TextBlock Text="Username:" />
             <TextBox x:Name="userNameTextBox" />
-            <TextBlock x:Name="userNameErrorTextBlock"/>
+            <TextBlock x:Name="userNameErrorTextBlock" Style="{StaticResource ErrorStyle}"/>
 
             <TextBlock Text="Password:" Margin="0 10 0 0" />
             <TextBox x:Name="passwordTextBox" />
-            <TextBlock x:Name="passwordErrorTextBlock"/>
+            <TextBlock x:Name="passwordErrorTextBlock" Style="{StaticResource ErrorStyle}"/>
 
-            <TextBlock Text="Confirm password:" Margin="0 10 0 0" />
+            <DockPanel Margin="0 10 0 0">
+                <TextBlock Text="Confirm password:"/>
+                <md:PackIcon 
+                    x:Name="pwCheckIcon" 
+                    Kind="CheckboxMarkedCircleOutline" 
+                    Margin="5 0"/>
+            </DockPanel>
             <TextBox x:Name="confirmPwTextBox" />
-            <TextBlock x:Name="confirmPwErrorTextBlock"/>
+            <TextBlock x:Name="confirmPwErrorTextBlock" Style="{StaticResource ErrorStyle}"/>
 
             <Button x:Name="signUpButton" Content="Sign Up" Margin="0 10"/>
 
