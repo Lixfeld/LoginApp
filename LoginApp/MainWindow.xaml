@@ -1,0 +1,55 @@
+﻿<rui:ReactiveWindow
+    x:Class="LoginApp.MainWindow"
+    x:TypeArguments="local:MainWindowModel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rui="http://reactiveui.net"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:LoginApp"
+    mc:Ignorable="d"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal" 
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    Title="Login App" Height="360" MinHeight="360" Width="400" MinWidth="250">
+
+    <Grid Margin="10">
+        <md:DialogHost x:Name="signUpHost" CloseOnClickAway="True">
+            <md:DialogHost.DialogContent>
+                <StackPanel Margin="20">
+                    <TextBlock x:Name="dialogHostTextBlock"/>
+                    <Button
+                        Content="OK"
+                        Margin="0 10 0 0"
+                        Command="{x:Static md:DialogHost.CloseDialogCommand}"/>
+                </StackPanel>
+            </md:DialogHost.DialogContent>
+        </md:DialogHost>
+
+        <StackPanel>
+            <TextBlock Text="Username:" />
+            <TextBox x:Name="userNameTextBox" />
+            <TextBlock x:Name="userNameErrorTextBlock"/>
+
+            <TextBlock Text="Password:" Margin="0 10 0 0" />
+            <TextBox x:Name="passwordTextBox" />
+            <TextBlock x:Name="passwordErrorTextBlock"/>
+
+            <TextBlock Text="Confirm password:" Margin="0 10 0 0" />
+            <TextBox x:Name="confirmPwTextBox" />
+            <TextBlock x:Name="confirmPwErrorTextBlock"/>
+
+            <Button x:Name="signUpButton" Content="Sign Up" Margin="0 10"/>
+
+            <TextBlock x:Name="summaryHeaderTextBlock" 
+                       Text="Error summary:" 
+                       TextDecorations="Underline"/>
+            <TextBlock x:Name="summaryContentTextBlock"/>
+        </StackPanel>
+    </Grid>
+</rui:ReactiveWindow>
