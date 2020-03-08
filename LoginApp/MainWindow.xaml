@@ -26,7 +26,8 @@
                     <Button
                         Content="OK"
                         Margin="0 10 0 0"
-                        Command="{x:Static md:DialogHost.CloseDialogCommand}"/>
+                        Command="{x:Static md:DialogHost.CloseDialogCommand}"
+                        CommandParameter="{StaticResource BoolTrue}"/>
                 </StackPanel>
             </md:DialogHost.DialogContent>
         </md:DialogHost>

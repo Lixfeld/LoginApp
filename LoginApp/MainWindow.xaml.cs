@@ -40,7 +40,7 @@ namespace LoginApp
                 this.ViewModel.ConfirmSignUp.RegisterHandler(async context =>
                 {
                     dialogHostTextBlock.Text = $"User '{context.Input}' created successfully.";
-                    await DialogHost.Show(signUpHost.DialogContent);
+                    var result = await DialogHost.Show(signUpHost.DialogContent);
                     context.SetOutput(Unit.Default);
                 }).DisposeWith(disposables);
             });
