@@ -14,8 +14,6 @@ namespace LoginApp
 {
     public class MainWindowModel : ReactiveValidationObject<MainWindowModel>
     {
-        public ValidationHelper PasswordRule { get; }
-
         public ValidationHelper ConfirmPasswordRule { get; }
 
         [Reactive]
@@ -38,7 +36,7 @@ namespace LoginApp
                 name => name?.Length >= 3 && Regex.IsMatch(name, @"^[A-Za-z0-9]*$"),
                 name => name?.Length < 3 ? "Username must be at least 3 chars." : $"'{name}' contains invalid characters.");
 
-            PasswordRule = this.ValidationRule(vm => vm.Password, pw => pw?.Length >= 6, "Password must be at least 6 chars.");
+            this.ValidationRule(vm => vm.Password, pw => pw?.Length >= 6, "Password must be at least 6 chars.");
 
             IObservable<bool> passwordsMatch = this.WhenAnyValue(x => x.Password, x => x.ConfirmPassword, (pw1, pw2) => pw1 == pw2);
             ConfirmPasswordRule = this.ValidationRule(
