@@ -14,18 +14,21 @@
 
 	<Grid Margin="10">
 		<StackPanel>
-			<TextBox Text="{Binding UserName}"
-					 Watermark="Username"
+			<TextBox Watermark="Username"
+					 x:Name="usernameTextBox"
+					 Text="{Binding UserName}"
 					 MaxLength="16" />
 
-			<TextBox Text="{Binding Password}"
-					 Watermark="Password"
+			<TextBox Watermark="Password"
+					 x:Name="passwordTextBox"
+					 Text="{Binding Password}"
 					 PasswordChar="*"
 					 Margin="0 10"
 					 MaxLength="16" />
 
-			<TextBox Text="{Binding ConfirmPassword}"
-					 Watermark="ConfirmPassword"
+			<TextBox Watermark="ConfirmPassword"
+					 x:Name="confirmPasswordTextBox"
+					 Text="{Binding ConfirmPassword}"
 					 PasswordChar="*"
 					 MaxLength="16" />
 

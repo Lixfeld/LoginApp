@@ -12,6 +12,11 @@ namespace LoginApp.Avalonia.Views
 {
     public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
+        // Use: https://github.com/AvaloniaUI/Avalonia.NameGenerator
+        //private TextBox usernameTextBox => this.FindControl<TextBox>("usernameTextBox");
+        //private TextBox passwordTextBox => this.FindControl<TextBox>("passwordTextBox");
+        //private TextBox confirmPasswordTextBox => this.FindControl<TextBox>("confirmPasswordTextBox");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,6 +25,11 @@ namespace LoginApp.Avalonia.Views
 #endif
             this.WhenActivated(disposables =>
             {
+                // Only Xaml-Bindings are working for Validation
+                //this.Bind(ViewModel, vm => vm.UserName, v => v.usernameTextBox.Text).DisposeWith(disposables);
+                //this.Bind(ViewModel, vm => vm.Password, v => v.passwordTextBox.Text).DisposeWith(disposables);
+                //this.Bind(ViewModel, vm => vm.ConfirmPassword, v => v.confirmPasswordTextBox.Text).DisposeWith(disposables);
+
                 ViewModel.ConfirmSignUp.RegisterHandler(DoShowDialogAsync).DisposeWith(disposables);
             });
         }
